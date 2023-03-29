@@ -27,7 +27,7 @@ testServer(
 })
 
 test_that("module ui works", {
-  ui <- mod_excalidraw_ui(id = "test")
+  ui <- mod_excalidraw_ui(id = "test", path_to_excalidraw = NULL)
   golem::expect_shinytaglist(ui)
   # Check that formals have not been removed
   fmls <- formals(mod_excalidraw_ui)

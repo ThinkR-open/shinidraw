@@ -1,7 +1,7 @@
 {
   "type": "excalidraw",
   "version": 2,
-  "source": "http://127.0.0.1:41615",
+  "source": "http://127.0.0.1:29546",
   "elements": [
     {
       "type": "rectangle",
@@ -61,8 +61,8 @@
     },
     {
       "type": "text",
-      "version": 17,
-      "versionNonce": 1526381062,
+      "version": 23,
+      "versionNonce": 1060060081,
       "isDeleted": false,
       "id": "Tzmq0i5gqUTRjDISBo1Xl",
       "fillStyle": "hachure",
@@ -75,23 +75,23 @@
       "y": 205.60936498641968,
       "strokeColor": "#000000",
       "backgroundColor": "transparent",
-      "width": 110,
+      "width": 124,
       "height": 25,
       "seed": 654286854,
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1680071774478,
+      "updated": 1680119265489,
       "link": null,
       "locked": false,
       "fontSize": 20,
       "fontFamily": 1,
-      "text": "Hello world!",
+      "text": "Hello ThinkR!",
       "baseline": 18,
       "textAlign": "left",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "Hello world!"
+      "originalText": "Hello ThinkR!"
     }
   ],
   "appState": {

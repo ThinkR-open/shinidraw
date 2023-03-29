@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/ColinFay/shinidraw/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ColinFay/shinidraw/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of shinidraw is to ...
@@ -29,6 +30,39 @@ You can install the development version of shinidraw like so:
 # FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
 ```
 
+## Why?
+
+The goal of `{shinidraw}` is to bring the amazing [Exaclidraw](https://excalidraw.com/) to your R console.
+
+Excalidraw is awesome, and we've been using it for prototyping `{shiny}` apps for a while now.
+So what was missing, and what does `{shinidraw}` brings to the table?
+
+### Projects
+
+When use in the browser, Excalidraw saves your drawings in your browser's local storage, and you can export and save locally.
+
+When using `{shinidraw}`, you'll have a built-in project system, where the `.excalidraw` files are store on the machine running the app.
+When launched (unless specifying `with_project = FALSE`), the app will prompt either for a new project, or for opening an existing one.
+If you develop in an existing project, `{shinidraw}` will load the latest version of the `.excalidraw` file.
+Inside the project folder, the excalidraw file are stored in subfolders by date, so that you can go back to previous versions of your drawings.
+
+This can be done via the following commands :
+
+```r
+# This will create a new project
+excalidraw_new_project()
+
+# This will open an existing project
+excalidraw_open_project("rr-2023")
+
+# Simply open a file
+excalidraw_open_file("inst/rect.excalidraw")
+```
+
+### Auto saving
+
+The app will auto-save your drawings at a given interval, so you don't have to worry about losing your work.
+
 ## Run the app
 
 You can launch the app with:
@@ -36,6 +70,7 @@ You can launch the app with:
 ```r
 shinidraw::run_app()
 ```
+
 
 ## About
 
@@ -54,7 +89,7 @@ devtools::check(quiet = TRUE)
 ```
 
 ```{r echo = FALSE}
-unloadNamespace("shinipsum")
+unloadNamespace("shinidraw")
 ```
 
 ```{r}

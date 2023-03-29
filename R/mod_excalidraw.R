@@ -2,9 +2,11 @@
 #'
 #' @description A shiny Module.
 #'
-#' @param id,input,output,session Internal parameters for {shiny}.
+#' @param id Internal parameters for {shiny}.
+#' @param path_to_excalidraw Path to the excalidraw file to load.
 #'
 #' @export
+#' @rdname mod_excalidraw
 #'
 #' @importFrom shiny NS tagList
 mod_excalidraw_ui <- function(id, path_to_excalidraw) {
@@ -13,7 +15,9 @@ mod_excalidraw_ui <- function(id, path_to_excalidraw) {
     excalidraw_initialData <- "[]"
   } else if (tools::file_ext(path_to_excalidraw) != "excalidraw") {
     excalidraw_initialData <- "[]"
-  } else {
+  } else if (!file.exists(path_to_excalidraw)) {
+    excalidraw_initialData <- "[]"
+  }else {
     excalidraw_initialData <- paste(
       readLines(path_to_excalidraw),
       collapse = " "
@@ -23,6 +27,7 @@ mod_excalidraw_ui <- function(id, path_to_excalidraw) {
   htmlTemplate(
     app_sys("app/www/index.html"),
     initialData = excalidraw_initialData,
+    id_for_shiny = ns("excalidraw")
     # add here other template arguments
   )
 }
@@ -30,10 +35,11 @@ mod_excalidraw_ui <- function(id, path_to_excalidraw) {
 #' main Server Functions
 #'
 #' @export
+#' @rdname mod_excalidraw
 mod_excalidraw_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
-    print(ns("excalidraw"))
+
     observeEvent(input$excalidraw, {
       cli::cat_rule(sprintf("[%s] Saving excalidraw", as.character(Sys.time())))
       cat(

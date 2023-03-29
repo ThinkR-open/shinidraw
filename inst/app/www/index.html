@@ -32,7 +32,7 @@
               initialData: {{ initialData }},
               onChange: (elements, state) => {
                 try {
-                    Shiny.setInputValue("main_1-excalidraw",
+                    Shiny.setInputValue("{{id_for_shiny}}",
                     ExcalidrawLib.serializeAsJSON(
                       element = excalidrawRef.current.getSceneElements(),
                       appState = excalidrawRef.current.getAppState(),

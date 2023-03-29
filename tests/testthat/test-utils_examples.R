@@ -1,3 +1,7 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("example work", {
+  expect_true(
+    file.exists(
+      excal_helloworld()
+    )
+  )
 })

@@ -20,7 +20,7 @@ attachment::att_amend_desc()
 
 ## Add modules ----
 ## Create a module infrastructure in R/
-golem::add_module(name = "main", with_test = TRUE) # Name of the module
+golem::add_module(name = "excalidraw", with_test = TRUE) # Name of the module
 golem::add_module(name = "name_of_module2", with_test = TRUE) # Name of the module
 
 ## Add helper functions ----
@@ -73,7 +73,12 @@ usethis::use_github_action()
 # Chose one of the three
 # See https://usethis.r-lib.org/reference/use_github_action.html
 usethis::use_github_action_check_release()
-usethis::use_github_action_check_standard()
+usethis::use_github_action_check_standard(
+  save_as = "R-CMD-check.yaml",
+  ref = NULL,
+  ignore = TRUE,
+  open = FALSE
+)
 usethis::use_github_action_check_full()
 # Add action for PR
 usethis::use_github_action_pr_commands()

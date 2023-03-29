@@ -1,18 +1,25 @@
 Package: shinidraw
 Title: 'Excalidraw' in 'Shiny'
 Version: 0.0.0.9000
-Authors@R: person('Colin', 'Fay', email = 'contact@colinfay.me', role = c('cre', 'aut'))
-Description: Bringing 'Excalidraw' to 'Shiny', with built-in project management and auto saving.
+Authors@R: 
+    person("Colin", "Fay", , "contact@colinfay.me", role = c("cre", "aut"))
+Description: Bringing 'Excalidraw' to 'Shiny', with built-in project
+    management and auto saving.
 License: MIT + file LICENSE
-Imports: 
-    config (>= 0.3.1),
-    golem (>= 0.4.0),
-    shiny (>= 1.7.4)
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.2.3
-Suggests: 
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
 URL: https://github.com/ColinFay/shinidraw
 BugReports: https://github.com/ColinFay/shinidraw/issues
+Imports: 
+    cli,
+    config (>= 0.3.1),
+    golem (>= 0.4.0),
+    shiny (>= 1.7.4),
+    tools,
+    utils
+Suggests: 
+    spelling,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Encoding: UTF-8
+Language: en-US
+LazyData: true
+RoxygenNote: 7.2.3
