@@ -8,6 +8,7 @@
 \usage{
 excalidraw_new_project(
   project,
+  auto_save = TRUE,
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
@@ -16,6 +17,7 @@ excalidraw_new_project(
 
 excalidraw_open_project(
   project,
+  auto_save = TRUE,
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
@@ -24,6 +26,7 @@ excalidraw_open_project(
 
 excalidraw_open_file(
   excalidraw,
+  auto_save = TRUE,
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
@@ -32,6 +35,8 @@ excalidraw_open_file(
 }
 \arguments{
 \item{project}{name to the project to load or create.}
+
+\item{auto_save}{whether to save the project automatically.}
 
 \item{onStart}{A function that will be called before the app is actually run.
 This is only needed for \code{shinyAppObj}, since in the \code{shinyAppDir}

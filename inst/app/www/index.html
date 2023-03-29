@@ -31,19 +31,22 @@
               ref: excalidrawRef,
               initialData: {{ initialData }},
               onChange: (elements, state) => {
-                try {
-                    Shiny.setInputValue("{{id_for_shiny}}",
-                    ExcalidrawLib.serializeAsJSON(
-                      element = excalidrawRef.current.getSceneElements(),
-                      appState = excalidrawRef.current.getAppState(),
-                      file = excalidrawRef.current.getFiles()
-                    )
-                    );
+                if ({{auto_save}}){
+                  try {
+                          Shiny.setInputValue("{{id_for_shiny}}",
+                            ExcalidrawLib.serializeAsJSON(
+                              element = excalidrawRef.current.getSceneElements(),
+                              appState = excalidrawRef.current.getAppState(),
+                              file = excalidrawRef.current.getFiles()
+                            )
+                          );
                   } catch {
-                    console.log("nop")
-                  }
+                      console.log("nop")
+                    }
 
-              },
+              }
+                }
+                ,
             }),
           ),
         );

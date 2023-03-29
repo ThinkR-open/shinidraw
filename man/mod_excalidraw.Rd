@@ -5,7 +5,7 @@
 \alias{mod_excalidraw_server}
 \title{main UI Function}
 \usage{
-mod_excalidraw_ui(id, path_to_excalidraw)
+mod_excalidraw_ui(id, path_to_excalidraw, with_auto_save = TRUE)
 
 mod_excalidraw_server(id)
 }
@@ -13,6 +13,8 @@ mod_excalidraw_server(id)
 \item{id}{Internal parameters for {shiny}.}
 
 \item{path_to_excalidraw}{Path to the excalidraw file to load.}
+
+\item{with_auto_save}{Whether to save the project automatically.}
 }
 \description{
 A shiny Module.

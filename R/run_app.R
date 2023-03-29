@@ -1,7 +1,7 @@
 #' Run and save excalidraw projects
 #'
 #' @param project name to the project to load or create.
-#' @param
+#' @param auto_save whether to save the project automatically.
 #' @param excalidraw path to the excalidraw file to load.
 #' @inheritParams shiny::shinyApp
 #'
@@ -11,6 +11,7 @@
 #' @rdname excalidraw
 excalidraw_new_project <- function(
   project,
+  auto_save = TRUE,
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
@@ -20,6 +21,7 @@ excalidraw_new_project <- function(
     excalidraw = handle_new_project(
       project
     ),
+    auto_save = auto_save,
     onStart = NULL,
     options = list(),
     enableBookmarking = NULL,
@@ -30,6 +32,7 @@ excalidraw_new_project <- function(
 #' @rdname excalidraw
 excalidraw_open_project <- function(
   project,
+  auto_save = TRUE,
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
@@ -40,6 +43,7 @@ excalidraw_open_project <- function(
     excalidraw = handle_open_project(
       project
     ),
+    auto_save = auto_save,
     onStart = NULL,
     options = list(),
     enableBookmarking = NULL,
@@ -50,6 +54,7 @@ excalidraw_open_project <- function(
 #' @rdname excalidraw
 excalidraw_open_file <- function(
   excalidraw,
+  auto_save = TRUE,
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
@@ -60,7 +65,7 @@ excalidraw_open_file <- function(
   }
   run_app(
     excalidraw = excalidraw,
-    project = NULL,
+    auto_save = auto_save,
     onStart = onStart,
     options = options,
     enableBookmarking = enableBookmarking,
@@ -70,7 +75,7 @@ excalidraw_open_file <- function(
 
 run_app <- function(
   excalidraw = NULL,
-  project = NULL,
+  auto_save = TRUE,
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
@@ -85,6 +90,9 @@ run_app <- function(
       enableBookmarking = enableBookmarking,
       uiPattern = uiPattern
     ),
-    golem_opts = list(path_to_excalidraw = excalidraw)
+    golem_opts = list(
+      path_to_excalidraw = excalidraw,
+      auto_save = auto_save
+    )
   )
 }

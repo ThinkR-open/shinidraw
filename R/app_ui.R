@@ -11,7 +11,8 @@ app_ui <- function(request) {
     # Your application UI logic
     mod_excalidraw_ui(
       "main_1",
-      path_to_excalidraw = golem::get_golem_options("path_to_excalidraw")
+      path_to_excalidraw = golem::get_golem_options("path_to_excalidraw"),
+      with_auto_save = golem::get_golem_options("auto_save")
     )
   )
 }
