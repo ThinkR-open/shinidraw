@@ -1,0 +1,66 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# shinidraw
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
+
+The goal of shinidraw is to ...
+
+## Installation
+
+You can install the development version of shinidraw like so:
+
+``` r
+# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+```
+
+## Run the app
+
+You can launch the app with:
+
+```r
+shinidraw::run_app()
+```
+
+## About
+
+You're reading the doc about version : `r pkgload::pkg_version()`
+
+This README has been compiled on the
+
+```{r}
+Sys.time()
+```
+
+Here are the test & coverage results :
+
+```{r}
+devtools::check(quiet = TRUE)
+```
+
+```{r echo = FALSE}
+unloadNamespace("shinipsum")
+```
+
+```{r}
+covr::package_coverage()
+```
+
+## Code of Conduct
+
+Please note that the shinidraw project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
