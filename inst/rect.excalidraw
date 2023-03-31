@@ -1,7 +1,7 @@
 {
   "type": "excalidraw",
   "version": 2,
-  "source": "http://127.0.0.1:29546",
+  "source": "http://127.0.0.1:3557",
   "elements": [
     {
       "type": "rectangle",
@@ -61,8 +61,8 @@
     },
     {
       "type": "text",
-      "version": 23,
-      "versionNonce": 1060060081,
+      "version": 47,
+      "versionNonce": 453205081,
       "isDeleted": false,
       "id": "Tzmq0i5gqUTRjDISBo1Xl",
       "fillStyle": "hachure",
@@ -71,27 +71,27 @@
       "roughness": 1,
       "opacity": 100,
       "angle": 0,
-      "x": 502.55208349227905,
+      "x": 492.2460837364197,
       "y": 205.60936498641968,
       "strokeColor": "#000000",
       "backgroundColor": "transparent",
-      "width": 124,
+      "width": 162,
       "height": 25,
       "seed": 654286854,
       "groupIds": [],
       "roundness": null,
       "boundElements": [],
-      "updated": 1680119265489,
+      "updated": 1680266515886,
       "link": null,
       "locked": false,
       "fontSize": 20,
       "fontFamily": 1,
-      "text": "Hello ThinkR!",
+      "text": "Hello excalidraw!",
       "baseline": 18,
       "textAlign": "left",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "Hello ThinkR!"
+      "originalText": "Hello excalidraw!"
     }
   ],
   "appState": {

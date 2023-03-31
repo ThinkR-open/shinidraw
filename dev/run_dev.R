@@ -15,7 +15,7 @@ pkgload::load_all()
 
 # run_app(excalidraw = "inst/rect.excalidraw")
 
-excalidraw_new_project()
+excalidraw_new_project("pres-excalidraw")
 
 excalidraw_open_project("rr-2023")
 
