@@ -13,3 +13,4 @@ $run_dev.*
 ^\.here$
 inst/projects
 ^inst/projects$
+^README\.html$
