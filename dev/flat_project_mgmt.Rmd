@@ -24,47 +24,65 @@ Here is what will happen when launching the app
 
 
 ```{r function-project_mgmt}
-#' project_mgmt
+#' List existing project
 #'
-#' @return Values used to set up excalidraw projects
-#' @noRd
+#' List existing project saved in the shinidraw project folder
+#'
+#' @export
+excal_existing_project <- function(){
+  x <- excal_list_existing_projects()
+  if (length(x) == 0) {
+    cli::cli_alert_danger("No existing project")
+    return(FALSE)
+  }
+  cat(
+    paste0(
+      1:length(x),
+      ": ",
+      x
+    ),
+    sep = "\n"
+  )
+}
+
+excal_list_existing_projects <- function() {
+  list.files(
+    app_sys("projects")
+  )
+}
+
+
 excal_new_or_existing <- function() {
   utils::menu(
     c("new" = "New project", "exising" = "Existing project"),
     title = "Do you wanna work on a new project or an existing one?"
   )
 }
-excal_list_existing_projects <- function(){
-  list.files(
-    app_sys("projects")
-  )
-}
 
 # Get a new project name
-excal_prompt_new_project_name <- function(){
+excal_prompt_new_project_name <- function() {
   # Ask the user to enter a project name
   # If the project name is valid but already exists, ask to print the existing ones
   # If yes, print the projects
   # Ask again, until project name is valid
   existing_projects <- excal_list_existing_projects()
   re_prompt <- TRUE
-  while (re_prompt){
+  while (re_prompt) {
     # Ask for a project name
     project_name <- base::readline("Enter a project name: ")
     # If the project name is already taken, ask if we want to open it
     if (project_name %in% existing_projects) {
       cli::cli_alert_danger("This project name already exists")
       open_it <- utils::askYesNo("Open it? (no to enter a new name)")
-      if (!open_it){
+      if (!open_it) {
         next()
       }
     }
     return(project_name)
   }
 }
-# excal_prompt_new_project_name()
 
-excal_prompt_existing_project_name <- function(){
+excal_prompt_existing_project_name <- function() {
   # Ask the user to select an existing project name
   existing_projects <- excal_list_existing_projects()
   # If no existing project, create a new one by prompting the user
@@ -80,7 +98,7 @@ excal_prompt_existing_project_name <- function(){
   return(project_name)
 }
 
-handle_new_project <- function(project){
+handle_new_project <- function(project) {
   # The user hasn't prompted a project name
   if (missing(project)) {
     # Prompt for new project
@@ -103,51 +121,67 @@ handle_new_project <- function(project){
     }
   }
   # Here, we have the name of the project, we need to build the path to it
-  project_path <- file.path(app_sys("projects"), project_name, Sys.Date())
+  project_path <- file.path(app_sys("projects"), project_name)
 
   # Each project has its own versionning system with
   # the current date as the version
   # We create it if it does not exist
-  if (!dir.exists(project_path)){
+  if (!dir.exists(project_path)) {
     dir.create(project_path, recursive = TRUE)
   }
-  excal <- file.path(project_path, sprintf("%s.excalidraw", project_name))
-  return(excal)
+  return(
+    file.path(
+      project_path,
+      sprintf(
+        "%s.excalidraw",
+        basename(project_path)
+      )
+    )
+  )
 }
-# handle_new_project(project = "rr-2023")
-# handle_new_project()
 
 handle_open_project <- function(project) {
   # The user hasn't prompted a project name
   if (missing(project)) {
     # Prompt for new project
-    project_path <- excal_prompt_existing_project_name()
-    excal <- file.path(project_path, sprintf("%s.excalidraw", project))
+    project_path <- file.path(
+      app_sys("projects"),
+      excal_prompt_existing_project_name()
+    )
   } else {
     # The user has entered a project name
     # We need to make sure this project can
     # either be created, or opened
-
+    project_path <- file.path(
+      app_sys("projects"),
+      project
+    )
     # If a project is specified, check if it exists
-    if (!dir.exists(app_sys("projects", project))) {
+    if (!dir.exists(project_path)) {
       # It doesn'texists, we might want to create it
       cli::cli_alert_danger("This project doesn't exists.")
       open <- utils::askYesNo("Create?")
       if (!open) {
         return(FALSE)
       }
-      project_path <- file.path(app_sys("projects"), project, Sys.Date())
       # project doesn't exist, we create it
-      dir.create(project_path, recursive = TRUE)
-    } else {
-      # It does not exist, we return the path
-      project_path <- file.path(app_sys("projects"), project, Sys.Date())
+      dir.create(
+        project_path,
+        recursive = TRUE
+      )
     }
   }
-
-
-  return(excal)
+  return(
+    file.path(
+      project_path,
+      sprintf(
+        "%s.excalidraw",
+        basename(project_path)
+      )
+    )
+  )
 }
+
 ```
 
 ```{r examples-project_mgmt}
