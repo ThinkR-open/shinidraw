@@ -6,12 +6,12 @@
 #' @noRd
 app_ui <- function(request) {
   # Just to satisfy testthat
-  if (is.null(golem::get_golem_options("auto_save"))){
+  if (is.null(golem::get_golem_options("auto_save"))) {
     with_auto_save <- TRUE
   } else {
     with_auto_save <- golem::get_golem_options("auto_save")
   }
-  if (is.null(golem::get_golem_options("path_to_excalidraw"))){
+  if (is.null(golem::get_golem_options("path_to_excalidraw"))) {
     path_to_excalidraw <- tempfile(fileext = ".excalidraw")
   } else {
     path_to_excalidraw <- golem::get_golem_options("path_to_excalidraw")

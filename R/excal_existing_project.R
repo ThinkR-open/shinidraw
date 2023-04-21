@@ -9,7 +9,7 @@
 #' if (interactive()) {
 #'   excal_new_or_existing()
 #' }
-excal_existing_project <- function(){
+excal_existing_project <- function() {
   x <- excal_list_existing_projects()
   if (length(x) == 0) {
     cli::cli_alert_danger("No existing project")
@@ -162,3 +162,18 @@ handle_open_project <- function(project) {
   )
 }
 
+#' Get the path to the Excalidraw file
+#'
+#' Get the link to the excalidraw file
+#'
+#' @param project_name The name of the project
+#'
+#' @export
+excalidraw_get_project <- function(project_name) {
+  proj <- app_sys("projects", project_name, sprintf("%s.excalidraw", project_name))
+  if (length(proj) == 0) {
+    cli::cli_alert_danger("No existing project")
+    return(FALSE)
+  }
+  return(proj)
+}

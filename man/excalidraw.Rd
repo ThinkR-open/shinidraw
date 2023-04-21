@@ -4,6 +4,7 @@
 \alias{excalidraw_new_project}
 \alias{excalidraw_open_project}
 \alias{excalidraw_open_file}
+\alias{excalidraw}
 \title{Run and save excalidraw projects}
 \usage{
 excalidraw_new_project(
@@ -27,6 +28,13 @@ excalidraw_open_project(
 excalidraw_open_file(
   excalidraw,
   auto_save = TRUE,
+  onStart = NULL,
+  options = list(),
+  enableBookmarking = NULL,
+  uiPattern = "/"
+)
+
+excalidraw(
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,

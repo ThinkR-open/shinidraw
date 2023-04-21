@@ -23,15 +23,43 @@ attachment::att_amend_desc()
 golem::add_module(name = "excalidraw", with_test = TRUE) # Name of the module
 golem::add_module(name = "name_of_module2", with_test = TRUE) # Name of the module
 
+rm(list = ls())
+{
+  comfy_inflate <- purrr::partial(
+    fusen::inflate,
+    check = FALSE,
+    vignette_name = NA
+  )
+  comfy_inflate(
+    flat_file = "dev/flat_htmldep.Rmd"
+  )
+  comfy_inflate(
+    flat_file = "dev/flat_project_mgmt.Rmd"
+  )
+}
+grkstyle::grk_style_pkg()
+devtools::check()
+
 ## Add helper functions ----
 ## Creates fct_* and utils_*
 golem::add_fct("helpers", with_test = TRUE)
 golem::add_utils("examples", with_test = TRUE)
 
 golem::add_html_template("index")
+
+golem::use_external_js_file("https://fb.me/react-0.14.3.min.js")
+golem::use_external_js_file("https://fb.me/react-dom-0.14.3.min.js")
+
+golem::use_external_js_file("https://unpkg.com/@excalidraw/excalidraw/dist/excalidraw.js")
 golem::use_external_js_file("https://unpkg.com/react@18.2.0/umd/react.development.js")
 golem::use_external_js_file("https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js")
-golem::use_external_js_file("https://unpkg.com/@excalidraw/excalidraw/dist/excalidraw.development.js")
+golem::use_external_js_file("https://unpkg.com/@excalidraw/excalidraw/dist/excalidraw.js")
+
+
+golem::use_external_js_file("https://unpkg.com/react@18.2.0/cjs/react.production.min.js")
+golem::use_external_js_file("https://unpkg.com/react-dom@18.2.0/cjs/react-dom.production.min.js")
+golem::use_external_js_file("https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js")
+golem::use_external_js_file("https://unpkg.com/@excalidraw/excalidraw/dist/excalidraw.js")
 
 ## External resources
 ## Creates .js and .css files at inst/app/www

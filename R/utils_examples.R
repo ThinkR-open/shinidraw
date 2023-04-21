@@ -6,5 +6,10 @@
 #'
 #' @noRd
 excal_helloworld <- function() {
-  app_sys("rect.excalidraw")
+  temp_file <- tempfile(fileext = ".excalidraw")
+  file.copy(
+    app_sys("rect.excalidraw"),
+    temp_file
+  )
+  temp_file
 }

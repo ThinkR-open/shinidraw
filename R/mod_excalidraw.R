@@ -14,7 +14,7 @@ mod_excalidraw_ui <- function(
   id,
   path_to_excalidraw,
   with_auto_save = TRUE
-) {
+    ) {
   ns <- NS(id)
   if (is.null(path_to_excalidraw)) {
     excalidraw_initialData <- "[]"
@@ -22,25 +22,30 @@ mod_excalidraw_ui <- function(
     excalidraw_initialData <- "[]"
   } else if (!file.exists(path_to_excalidraw)) {
     excalidraw_initialData <- "[]"
-  }else {
+  } else {
     excalidraw_initialData <- paste(
-      readLines(path_to_excalidraw),
+      suppressWarnings(
+        readLines(path_to_excalidraw)
+      ),
       collapse = " "
     )
   }
 
-  htmlTemplate(
-    app_sys("app/www/index.html"),
-    initialData = excalidraw_initialData,
-    auto_save = {
-      if (with_auto_save){
-        "true"
-      } else {
-        "false"
-      }
-    },
-    id_for_shiny = ns("excalidraw")
-    # add here other template arguments
+  tagList(
+    excal_dependency(),
+    htmlTemplate(
+      app_sys("app/www/index.html"),
+      initialData = excalidraw_initialData,
+      auto_save = {
+        if (with_auto_save) {
+          "true"
+        } else {
+          "false"
+        }
+      },
+      id_for_shiny = ns("excalidraw")
+      # add here other template arguments
+    )
   )
 }
 
@@ -57,7 +62,7 @@ mod_excalidraw_server <- function(id) {
         as.logical(
           golem::get_golem_options("auto_save")
         )
-      ){
+      ) {
         cli::cat_rule(sprintf("[%s] Saving excalidraw", as.character(Sys.time())))
         cat(
           input$excalidraw,

@@ -182,6 +182,22 @@ handle_open_project <- function(project) {
   )
 }
 
+#' Get the path to the Excalidraw file
+#'
+#' Get the link to the excalidraw file
+#'
+#' @param project_name The name of the project
+#'
+#' @export
+excalidraw_get_project <- function(project_name){
+  proj <- app_sys("projects", project_name, sprintf("%s.excalidraw", project_name))
+  if (length(proj) == 0) {
+    cli::cli_alert_danger("No existing project")
+    return(FALSE)
+  }
+  return(proj)
+}
+
 ```
 
 ```{r examples-project_mgmt}
@@ -192,14 +208,23 @@ if (interactive()) {
 
 ```{r tests-project_mgmt}
 test_that("project_mgmt works", {
+  expect_error(
+    testthat::capture_output(excal_existing_project()),
+    regexp = NA
+  )
+  expect_error(
+    excal_list_existing_projects(),
+    regexp = NA
+  )
+  expect_equal(
+    length(excal_list_existing_projects()),
+    length(
+      list.files(
+        system.file("projects", package = "shinidraw")
+      )
+    )
+  )
 
 })
-```
-
-
-```{r development-inflate, eval=FALSE}
-# Run but keep eval=FALSE to avoid infinite loop
-# Execute in the console directly
-fusen::inflate(flat_file = "dev/flat_project_mgmt.Rmd", vignette_name = NA)
 ```
 

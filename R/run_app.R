@@ -16,7 +16,7 @@ excalidraw_new_project <- function(
   options = list(),
   enableBookmarking = NULL,
   uiPattern = "/"
-) {
+    ) {
   run_app(
     excalidraw = handle_new_project(
       project
@@ -38,7 +38,6 @@ excalidraw_open_project <- function(
   enableBookmarking = NULL,
   uiPattern = "/"
     ) {
-
   run_app(
     excalidraw = handle_open_project(
       project
@@ -66,6 +65,25 @@ excalidraw_open_file <- function(
   run_app(
     excalidraw = excalidraw,
     auto_save = auto_save,
+    onStart = onStart,
+    options = options,
+    enableBookmarking = enableBookmarking,
+    uiPattern = uiPattern
+  )
+}
+
+#' @export
+#' @rdname excalidraw
+excalidraw <- function(
+  onStart = NULL,
+  options = list(),
+  enableBookmarking = NULL,
+  uiPattern = "/"
+    ) {
+  excalidraw <- tempfile(fileext = ".excalidraw")
+  run_app(
+    excalidraw = excalidraw,
+    auto_save = FALSE,
     onStart = onStart,
     options = options,
     enableBookmarking = enableBookmarking,

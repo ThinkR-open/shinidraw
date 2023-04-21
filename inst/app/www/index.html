@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-  <head>
-    <title>Excalidraw in browser</title>
-    <meta charset="UTF-8" />
-    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
-
-    <script type="text/javascript" src="https://unpkg.com/@excalidraw/excalidraw/dist/excalidraw.development.js"></script>
-  </head>
-
-<body>
+<div>
   <div>
     <div id="app"></div>
   </div>
@@ -41,7 +29,7 @@
                             )
                           );
                   } catch {
-                      console.log("nop")
+                      console.log("Error auto saving")
                     }
 
               }
@@ -56,6 +44,4 @@
       const root = ReactDOM.createRoot(excalidrawWrapper);
       root.render(React.createElement(App));
   </script>
-</body>
-
-</html>
+</div>

@@ -1,0 +1,70 @@
+---
+title: "flat_htmldep.Rmd empty"
+output: html_document
+editor_options:
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# htmldep
+
+```{r function-htmldep}
+#' htmldep Title
+#'
+#' @return 1
+#' @noRd
+excal_dependency <- function() {
+  htmltools::htmlDependency(
+    "Excalidraw",
+    "0.14.2",
+    src = system.file("excalidraw_deps", package = "shinidraw"),
+    script = c(
+      "react.development.min.js",
+      "react-dom.development.min.js",
+      "excalidraw.production.min.js"
+    ),
+    meta = list(
+      charset = "UTF-8"
+    ),
+    head = HTML(
+      '<meta name="viewport" content="width=device-width, initial-scale=1">'
+    )
+  )
+}
+
+
+```
+
+```{r examples-htmldep}
+excal_dependency()
+```
+
+```{r tests-htmldep}
+test_that("htmldep works", {
+  deps <- excal_dependency()
+  expect_true(
+    inherits(deps, "html_dependency")
+  )
+  expect_true(
+    deps$name == "Excalidraw"
+  )
+  expect_true(
+    deps$name == "Excalidraw"
+  )
+  expect_true(
+    all(list.files("inst/excalidraw_deps") %in% deps$script)
+  )
+})
+
+```
+
+
+
