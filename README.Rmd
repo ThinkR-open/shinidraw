@@ -35,13 +35,13 @@ pak::pak("thinkr-open/shinidraw")
 ## Why?
 
 Excalidraw is awesome, and we've been using it for prototyping `{shiny}` apps for a while now.
-So what was missing, and what does `{shinidraw}` brings to the table?
+So what is missing, and what does `{shinidraw}` bring to the table?
 
 ### Projects
 
-When use in the browser, Excalidraw saves your drawings in your browser's local storage, and you can export and save locally.
+When used in the browser, Excalidraw saves your drawings in your browser's local storage, and you can export and save locally.
 
-When using `{shinidraw}`, you'll have a built-in project system, where the `.excalidraw` files are store on the machine running the app.
+When using `{shinidraw}`, you'll have a built-in project system, where the `.excalidraw` files are stored on the machine running the app.
 
 If you develop in an existing project, `{shinidraw}` will load the latest version of the `.excalidraw` file.
 
@@ -72,7 +72,7 @@ The app will auto-save your drawings at a given interval, so you don't have to w
 
 ## About
 
-You're reading the doc about version : `r pkgload::pkg_version()`
+You're reading the doc about version: `r pkgload::pkg_version()`
 
 This README has been compiled on the
 
@@ -80,7 +80,7 @@ This README has been compiled on the
 Sys.time()
 ```
 
-Here are the test & coverage results :
+Here are the test & coverage results:
 
 ```{r}
 devtools::check(quiet = TRUE)
