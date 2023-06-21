@@ -60,8 +60,9 @@ excalidraw_new_project()
 excalidraw_open_project("rr-2023")
 
 # Simply open a file
+(file <- excalidraw_helloworld())
 excalidraw_open_file(
-  excalidraw_existing_project()
+  file
 )
 ```
 

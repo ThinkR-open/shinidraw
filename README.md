@@ -55,8 +55,9 @@ excalidraw_new_project()
 excalidraw_open_project("rr-2023")
 
 # Simply open a file
+(file <- excalidraw_helloworld())
 excalidraw_open_file(
-  excalidraw_existing_project()
+  file
 )
 ```
 
@@ -76,7 +77,7 @@ This README has been compiled on the
 
 ``` r
 Sys.time()
-#> [1] "2023-06-21 14:59:16 CEST"
+#> [1] "2023-06-21 15:01:56 CEST"
 ```
 
 Here are the test & coverage results:
