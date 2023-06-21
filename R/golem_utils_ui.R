@@ -10,29 +10,29 @@
 #' list_to_li(c("a", "b"))
 #' @importFrom shiny tags tagAppendAttributes tagList
 list_to_li <- function(list, class = NULL) {
-  if (is.null(class)) {
-    tagList(
-      lapply(
-        list,
-        tags$li
-      )
-    )
-  } else {
-    res <- lapply(
-      list,
-      tags$li
-    )
-    res <- lapply(
-      res,
-      function(x) {
-        tagAppendAttributes(
-          x,
-          class = class
-        )
-      }
-    )
-    tagList(res)
-  }
+	if (is.null(class)) {
+		tagList(
+			lapply(
+				list,
+				tags$li
+			)
+		)
+	} else {
+		res <- lapply(
+			list,
+			tags$li
+		)
+		res <- lapply(
+			res,
+			function(x) {
+				tagAppendAttributes(
+					x,
+					class = class
+				)
+			}
+		)
+		tagList(res)
+	}
 }
 #' Turn an R list into corresponding HTML paragraph tags
 #'
@@ -47,71 +47,71 @@ list_to_li <- function(list, class = NULL) {
 #' @importFrom shiny tags tagAppendAttributes tagList
 #'
 list_to_p <- function(list, class = NULL) {
-  if (is.null(class)) {
-    tagList(
-      lapply(
-        list,
-        tags$p
-      )
-    )
-  } else {
-    res <- lapply(
-      list,
-      tags$p
-    )
-    res <- lapply(
-      res,
-      function(x) {
-        tagAppendAttributes(
-          x,
-          class = class
-        )
-      }
-    )
-    tagList(res)
-  }
+	if (is.null(class)) {
+		tagList(
+			lapply(
+				list,
+				tags$p
+			)
+		)
+	} else {
+		res <- lapply(
+			list,
+			tags$p
+		)
+		res <- lapply(
+			res,
+			function(x) {
+				tagAppendAttributes(
+					x,
+					class = class
+				)
+			}
+		)
+		tagList(res)
+	}
 }
 
 #' @importFrom shiny tags tagAppendAttributes tagList
 named_to_li <- function(list, class = NULL) {
-  if (is.null(class)) {
-    res <- mapply(
-      function(x, y) {
-        tags$li(
-          HTML(
-            sprintf("<b>%s:</b> %s", y, x)
-          )
-        )
-      },
-      list,
-      names(list),
-      SIMPLIFY = FALSE
-    )
-    tagList(res)
-  } else {
-    res <- mapply(
-      function(x, y) {
-        tags$li(
-          HTML(
-            sprintf("<b>%s:</b> %s", y, x)
-          )
-        )
-      },
-      list,
-      names(list),
-      SIMPLIFY = FALSE
-    )
-    res <- lapply(
-      res,
-      function(x) {
-        tagAppendAttributes(
-          x,
-          class = class
-        )
-      }
-    )
-    tagList(res)
-  }
+	if (is.null(class)) {
+		res <- mapply(
+			function(x, y) {
+				tags$li(
+					HTML(
+						sprintf("<b>%s:</b> %s", y, x)
+					)
+				)
+			},
+			list,
+			names(list),
+			SIMPLIFY = FALSE
+		)
+		tagList(res)
+	} else {
+		res <- mapply(
+			function(x, y) {
+				tags$li(
+					HTML(
+						sprintf("<b>%s:</b> %s", y, x)
+					)
+				)
+			},
+			list,
+			names(list),
+			SIMPLIFY = FALSE
+		)
+		res <- lapply(
+			res,
+			function(x) {
+				tagAppendAttributes(
+					x,
+					class = class
+				)
+			}
+		)
+		tagList(res)
+	}
 }
 
 #' Remove a tag attribute
@@ -126,11 +126,11 @@ named_to_li <- function(list, class = NULL) {
 #' a <- shiny::tags$p(src = "plop", "pouet")
 #' tagRemoveAttributes(a, "src")
 tagRemoveAttributes <- function(tag, ...) {
-  attrs <- as.character(list(...))
-  for (i in seq_along(attrs)) {
-    tag$attribs[[attrs[i]]] <- NULL
-  }
-  tag
+	attrs <- as.character(list(...))
+	for (i in seq_along(attrs)) {
+		tag$attribs[[attrs[i]]] <- NULL
+	}
+	tag
 }
 
 #' Hide or display a tag
@@ -148,34 +148,34 @@ tagRemoveAttributes <- function(tag, ...) {
 #' undisplay(b)
 #' @importFrom shiny tagList
 undisplay <- function(tag) {
-  # if not already hidden
-  if (
-    !is.null(tag$attribs$style) &&
-      !grepl("display:\\s+none", tag$attribs$style)
-  ) {
-    tag$attribs$style <- paste(
-      "display: none;",
-      tag$attribs$style
-    )
-  } else {
-    tag$attribs$style <- "display: none;"
-  }
-  tag
+	# if not already hidden
+	if (
+		!is.null(tag$attribs$style) &&
+			!grepl("display:\\s+none", tag$attribs$style)
+	) {
+		tag$attribs$style <- paste(
+			"display: none;",
+			tag$attribs$style
+		)
+	} else {
+		tag$attribs$style <- "display: none;"
+	}
+	tag
 }
 
 #' @importFrom shiny tagList
 display <- function(tag) {
-  if (
-    !is.null(tag$attribs$style) &&
-      grepl("display:\\s+none", tag$attribs$style)
-  ) {
-    tag$attribs$style <- gsub(
-      "(\\s)*display:(\\s)*none(\\s)*(;)*(\\s)*",
-      "",
-      tag$attribs$style
-    )
-  }
-  tag
+	if (
+		!is.null(tag$attribs$style) &&
+			grepl("display:\\s+none", tag$attribs$style)
+	) {
+		tag$attribs$style <- gsub(
+			"(\\s)*display:(\\s)*none(\\s)*(;)*(\\s)*",
+			"",
+			tag$attribs$style
+		)
+	}
+	tag
 }
 
 #' Hide an elements by calling jquery hide on it
@@ -186,7 +186,7 @@ display <- function(tag) {
 #'
 #' @importFrom shiny tags
 jq_hide <- function(id) {
-  tags$script(sprintf("$('#%s').hide()", id))
+	tags$script(sprintf("$('#%s').hide()", id))
 }
 
 #' Add a red star at the end of the text
@@ -203,17 +203,17 @@ jq_hide <- function(id) {
 #' with_red_star("Enter your name here")
 #' @importFrom shiny tags HTML
 with_red_star <- function(text) {
-  shiny::tags$span(
-    HTML(
-      paste0(
-        text,
-        shiny::tags$span(
-          style = "color:red",
-          "*"
-        )
-      )
-    )
-  )
+	shiny::tags$span(
+		HTML(
+			paste0(
+				text,
+				shiny::tags$span(
+					style = "color:red",
+					"*"
+				)
+			)
+		)
+	)
 }
 
 
@@ -229,7 +229,7 @@ with_red_star <- function(text) {
 #' rep_br(5)
 #' @importFrom shiny HTML
 rep_br <- function(times = 1) {
-  HTML(rep("<br/>", times = times))
+	HTML(rep("<br/>", times = times))
 }
 
 #' Create an url
@@ -244,7 +244,7 @@ rep_br <- function(times = 1) {
 #' enurl("https://www.thinkr.fr", "ThinkR")
 #' @importFrom shiny tags
 enurl <- function(url, text) {
-  tags$a(href = url, text)
+	tags$a(href = url, text)
 }
 
 #' Columns wrappers
@@ -256,46 +256,46 @@ enurl <- function(url, text) {
 #'
 #' @importFrom shiny column
 col_12 <- function(...) {
-  column(12, ...)
+	column(12, ...)
 }
 
 #' @importFrom shiny column
 col_10 <- function(...) {
-  column(10, ...)
+	column(10, ...)
 }
 
 #' @importFrom shiny column
 col_8 <- function(...) {
-  column(8, ...)
+	column(8, ...)
 }
 
 #' @importFrom shiny column
 col_6 <- function(...) {
-  column(6, ...)
+	column(6, ...)
 }
 
 
 #' @importFrom shiny column
 col_4 <- function(...) {
-  column(4, ...)
+	column(4, ...)
 }
 
 
 #' @importFrom shiny column
 col_3 <- function(...) {
-  column(3, ...)
+	column(3, ...)
 }
 
 
 #' @importFrom shiny column
 col_2 <- function(...) {
-  column(2, ...)
+	column(2, ...)
 }
 
 
 #' @importFrom shiny column
 col_1 <- function(...) {
-  column(1, ...)
+	column(1, ...)
 }
 
 
@@ -313,58 +313,58 @@ col_1 <- function(...) {
 #'
 #' @examples
 #' if (interactive()) {
-#'   library(shiny)
+#' 	library(shiny)
 #'
-#'   link <- a(href = "#", "My super link", style = "color: lightblue;")
+#' 	link <- a(href = "#", "My super link", style = "color: lightblue;")
 #'
-#'   ui <- fluidPage(
-#'     make_action_button(link, inputId = "mylink")
-#'   )
+#' 	ui <- fluidPage(
+#' 		make_action_button(link, inputId = "mylink")
+#' 	)
 #'
-#'   server <- function(input, output, session) {
-#'     observeEvent(input$mylink, {
-#'       showNotification("Pouic!")
-#'     })
-#'   }
+#' 	server <- function(input, output, session) {
+#' 		observeEvent(input$mylink, {
+#' 			showNotification("Pouic!")
+#' 		})
+#' 	}
 #'
-#'   shinyApp(ui, server)
+#' 	shinyApp(ui, server)
 #' }
 make_action_button <- function(tag, inputId = NULL) {
-  # some obvious checks
-  if (!inherits(tag, "shiny.tag")) stop("Must provide a shiny tag.")
-  if (!is.null(tag$attribs$class)) {
-    if (grep("action-button", tag$attribs$class)) {
-      stop("tag is already an action button")
-    }
-  }
-  if (is.null(inputId) && is.null(tag$attribs$id)) {
-    stop("tag does not have any id. Please use inputId to be able to
+	# some obvious checks
+	if (!inherits(tag, "shiny.tag")) stop("Must provide a shiny tag.")
+	if (!is.null(tag$attribs$class)) {
+		if (grep("action-button", tag$attribs$class)) {
+			stop("tag is already an action button")
+		}
+	}
+	if (is.null(inputId) && is.null(tag$attribs$id)) {
+		stop("tag does not have any id. Please use inputId to be able to
            access it on the server side.")
-  }
+	}
 
-  # handle id
-  if (!is.null(inputId)) {
-    if (!is.null(tag$attribs$id)) {
-      warning(
-        paste(
-          "tag already has an id. Please use input$",
-          tag$attribs$id,
-          "to access it from the server side. inputId will be ignored."
-        )
-      )
-    } else {
-      tag$attribs$id <- inputId
-    }
-  }
+	# handle id
+	if (!is.null(inputId)) {
+		if (!is.null(tag$attribs$id)) {
+			warning(
+				paste(
+					"tag already has an id. Please use input$",
+					tag$attribs$id,
+					"to access it from the server side. inputId will be ignored."
+				)
+			)
+		} else {
+			tag$attribs$id <- inputId
+		}
+	}
 
-  # handle class
-  if (is.null(tag$attribs$class)) {
-    tag$attribs$class <- "action-button"
-  } else {
-    tag$attribs$class <- paste(tag$attribs$class, "action-button")
-  }
-  # return tag
-  tag
+	# handle class
+	if (is.null(tag$attribs$class)) {
+		tag$attribs$class <- "action-button"
+	} else {
+		tag$attribs$class <- paste(tag$attribs$class, "action-button")
+	}
+	# return tag
+	tag
 }
 
 

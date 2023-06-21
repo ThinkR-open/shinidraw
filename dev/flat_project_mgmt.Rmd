@@ -24,6 +24,7 @@ Here is what will happen when launching the app
 
 
 ```{r function-project_mgmt}
+
 #' List existing project
 #'
 #' List existing project saved in the shinidraw project folder
@@ -47,7 +48,7 @@ excal_existing_project <- function(){
 
 excal_list_existing_projects <- function() {
   list.files(
-    app_sys("projects")
+    get_excalidraw_path()
   )
 }
 
@@ -99,6 +100,7 @@ excal_prompt_existing_project_name <- function() {
 }
 
 handle_new_project <- function(project) {
+  excal_home <- get_excalidraw_path()
   # The user hasn't prompted a project name
   if (missing(project)) {
     # Prompt for new project
@@ -110,7 +112,7 @@ handle_new_project <- function(project) {
     project_name <- project
 
     # If a project is specified, check if it exists
-    if (dir.exists(app_sys("projects", project_name))) {
+    if (dir.exists(file.path(excal_home, project_name))) {
       # It exists, we might want to open it instead of
       # creating a new one
       cli::cli_alert_danger("This project already exists.")
@@ -121,7 +123,7 @@ handle_new_project <- function(project) {
     }
   }
   # Here, we have the name of the project, we need to build the path to it
-  project_path <- file.path(app_sys("projects"), project_name)
+  project_path <- file.path(excal_home, project_name)
 
   # Each project has its own versionning system with
   # the current date as the version
@@ -141,11 +143,12 @@ handle_new_project <- function(project) {
 }
 
 handle_open_project <- function(project) {
+  excal_home <- get_excalidraw_path()
   # The user hasn't prompted a project name
   if (missing(project)) {
     # Prompt for new project
     project_path <- file.path(
-      app_sys("projects"),
+      excal_home,
       excal_prompt_existing_project_name()
     )
   } else {
@@ -153,7 +156,7 @@ handle_open_project <- function(project) {
     # We need to make sure this project can
     # either be created, or opened
     project_path <- file.path(
-      app_sys("projects"),
+      excal_home,
       project
     )
     # If a project is specified, check if it exists
@@ -190,7 +193,8 @@ handle_open_project <- function(project) {
 #'
 #' @export
 excalidraw_get_project <- function(project_name){
-  proj <- app_sys("projects", project_name, sprintf("%s.excalidraw", project_name))
+  excal_home <- get_excalidraw_path()
+  proj <- file.path(excal_home, sprintf("%s.excalidraw", project_name))
   if (length(proj) == 0) {
     cli::cli_alert_danger("No existing project")
     return(FALSE)
@@ -208,6 +212,7 @@ if (interactive()) {
 
 ```{r tests-project_mgmt}
 test_that("project_mgmt works", {
+    excalidraw_consent(TRUE)
   expect_error(
     testthat::capture_output(excal_existing_project()),
     regexp = NA
@@ -220,10 +225,12 @@ test_that("project_mgmt works", {
     length(excal_list_existing_projects()),
     length(
       list.files(
-        system.file("projects", package = "shinidraw")
+        get_excalidraw_path()
       )
     )
   )
+
+    excalidraw_unconsent()
 
 })
 ```

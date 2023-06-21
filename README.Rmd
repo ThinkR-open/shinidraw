@@ -6,10 +6,10 @@ output: github_document
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+	collapse = TRUE,
+	comment = "#>",
+	fig.path = "man/figures/README-",
+	out.width = "100%"
 )
 ```
 
@@ -64,6 +64,8 @@ excalidraw_open_file(
   excal_helloworld()
 )
 ```
+
+Note that the first time you launch `{shinidraw}`, it will prompt for your consent to store data on your computer.
 
 ### Auto saving
 

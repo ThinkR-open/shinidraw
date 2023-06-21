@@ -1,0 +1,62 @@
+---
+title: "flat_utils.Rmd empty"
+output: html_document
+editor_options:
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# utils
+
+```{r function-utils}
+#' utils Title
+#'
+#' @return 1
+#' @noRd
+#'
+#' @examples
+get_excalidraw_path <- function() {
+  if (
+    !excalidraw_consent()
+  ) {
+    stop("You need to accept the consent to use {shinidraw} projects.\nRun the `excalidraw_consent()` function to accept the consent.")
+  }
+  pth <- Sys.getenv("EXCALIDRAW_PATH", unset = "~/shinidraw/")
+  if (!dir.exists(pth)) {
+    dir.create(pth)
+  }
+  return(pth)
+}
+
+```
+
+```{r examples-utils}
+if (interactive()) {
+  get_excalidraw_path()
+}
+```
+
+```{r tests-utils}
+test_that("get_excalidraw_path works", {
+  excalidraw_consent(TRUE)
+  res <- get_excalidraw_path()
+  expect_equal(res, "~/shinidraw/")
+  excalidraw_unconsent()
+})
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_utils.Rmd", vignette_name = "Go further")
+```
+

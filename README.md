@@ -60,6 +60,9 @@ excalidraw_open_file(
 )
 ```
 
+Note that the first time you launch `{shinidraw}`, it will prompt for
+your consent to store data on your computer.
+
 ### Auto saving
 
 The app will auto-save your drawings at a given interval, so you don’t
@@ -73,7 +76,7 @@ This README has been compiled on the
 
 ``` r
 Sys.time()
-#> [1] "2023-04-21 17:01:08 CEST"
+#> [1] "2023-06-21 14:09:17 CEST"
 ```
 
 Here are the test & coverage results :
@@ -82,20 +85,22 @@ Here are the test & coverage results :
 devtools::check(quiet = TRUE)
 #> ℹ Loading shinidraw
 #> ── R CMD check results ─────────────────────────────── shinidraw 0.0.0.9000 ────
-#> Duration: 11.7s
+#> Duration: 10.2s
 #> 
 #> 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 ```
 
 ``` r
 covr::package_coverage()
-#> shinidraw Coverage: 56.82%
+#> shinidraw Coverage: 58.71%
 #> R/run_app.R: 0.00%
-#> R/excal_existing_project.R: 13.98%
-#> R/mod_excalidraw.R: 62.22%
-#> R/golem_utils_server.R: 77.78%
-#> R/golem_utils_ui.R: 87.94%
-#> R/app_ui.R: 92.00%
+#> R/excal_existing_project.R: 12.84%
+#> R/mod_excalidraw.R: 57.45%
+#> R/excalidraw_consent.R: 74.07%
+#> R/get_excalidraw_path.R: 80.00%
+#> R/golem_utils_server.R: 84.62%
+#> R/golem_utils_ui.R: 89.57%
+#> R/app_ui.R: 93.10%
 #> R/app_config.R: 100.00%
 #> R/app_server.R: 100.00%
 #> R/excal_dependency.R: 100.00%
