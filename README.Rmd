@@ -61,7 +61,7 @@ excalidraw_open_project("rr-2023")
 
 # Simply open a file
 excalidraw_open_file(
-  excal_helloworld()
+  excal_existing_project()
 )
 ```
 

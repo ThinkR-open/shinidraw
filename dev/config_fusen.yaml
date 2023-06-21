@@ -29,8 +29,8 @@ flat_htmldep.Rmd:
 flat_project_mgmt.Rmd:
   path: dev/flat_project_mgmt.Rmd
   state: active
-  R: R/excal_existing_project.R
-  tests: tests/testthat/test-excal_existing_project.R
+  R: R/excalidraw_existing_project.R
+  tests: tests/testthat/test-excalidraw_existing_project.R
   vignettes: []
   inflate:
     pkg: shinidraw

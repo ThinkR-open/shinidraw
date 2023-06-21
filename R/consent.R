@@ -9,36 +9,36 @@
 #'
 #' @examples
 #' if (interactive()) {
-#' 	consent()
-#' 	unconsent()
+#'   consent()
+#'   unconsent()
 #' }
-consent <- function(force = FALSE) {
-	if (file.exists(
-		app_sys("consent")
-	)) {
-		return(TRUE)
-	} else {
-		if (force) {
-			consent <- TRUE
-		} else {
-			consent <- utils::askYesNo(
-				"Are you ok with {shinidraw} storing data on your computer?"
-			)
-		}
-		if (consent) {
-			file.create(
-				file.path(app_sys(), "consent")
-			)
-			return(TRUE)
-		} else {
-			stop("You need to accept the consent to use {shinidraw} projects.")
-		}
-	}
+excalidraw_consent <- function(force = FALSE) {
+  if (file.exists(
+    app_sys("consent")
+  )) {
+    return(TRUE)
+  } else {
+    if (force) {
+      consent <- TRUE
+    } else {
+      consent <- utils::askYesNo(
+        "Are you ok with {shinidraw} storing data on your computer?"
+      )
+    }
+    if (consent) {
+      file.create(
+        file.path(app_sys(), "consent")
+      )
+      return(TRUE)
+    } else {
+      stop("You need to accept the consent to use {shinidraw} projects.")
+    }
+  }
 }
 #' @export
 #' @rdname consent
-unconsent <- function() {
-	unlink(
-		app_sys("consent")
-	)
+excalidraw_unconsent <- function() {
+  unlink(
+    app_sys("consent")
+  )
 }

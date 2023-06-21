@@ -22,7 +22,8 @@ excalidraw_open_project(
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
-  uiPattern = "/"
+  uiPattern = "/",
+  talkative = FALSE
 )
 
 excalidraw_open_file(
@@ -31,14 +32,16 @@ excalidraw_open_file(
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
-  uiPattern = "/"
+  uiPattern = "/",
+  talkative = FALSE
 )
 
 excalidraw(
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
-  uiPattern = "/"
+  uiPattern = "/",
+  talkative = FALSE
 )
 }
 \arguments{

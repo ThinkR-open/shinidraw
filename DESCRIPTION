@@ -1,6 +1,6 @@
 Package: shinidraw
 Title: 'Excalidraw' in 'Shiny'
-Version: 0.0.0.9004
+Version: 0.0.0.9005
 Authors@R: c(
     person("Colin", "Fay", , "contact@colinfay.me", role = c("cre", "aut")),
     person("Excalidraw", role = "cph",

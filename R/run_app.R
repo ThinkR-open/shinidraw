@@ -26,7 +26,8 @@ excalidraw_new_project <- function(
     onStart = NULL,
     options = list(),
     enableBookmarking = NULL,
-    uiPattern = "/"
+    uiPattern = "/",
+    talkative = talkative
   )
 }
 #' @export
@@ -37,7 +38,8 @@ excalidraw_open_project <- function(
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
-  uiPattern = "/"
+  uiPattern = "/",
+  talkative = FALSE
     ) {
   consent()
   run_app(
@@ -48,7 +50,8 @@ excalidraw_open_project <- function(
     onStart = NULL,
     options = list(),
     enableBookmarking = NULL,
-    uiPattern = "/"
+    uiPattern = "/",
+    talkative = talkative
   )
 }
 #' @export
@@ -59,7 +62,8 @@ excalidraw_open_file <- function(
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
-  uiPattern = "/"
+  uiPattern = "/",
+  talkative = FALSE
     ) {
   if (missing(excalidraw)) {
     excalidraw <- tempfile(fileext = ".excalidraw")
@@ -72,7 +76,8 @@ excalidraw_open_file <- function(
     onStart = onStart,
     options = options,
     enableBookmarking = enableBookmarking,
-    uiPattern = uiPattern
+    uiPattern = uiPattern,
+    talkative = talkative
   )
 }
 
@@ -82,8 +87,9 @@ excalidraw <- function(
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
-  uiPattern = "/"
-) {
+  uiPattern = "/",
+  talkative = FALSE
+    ) {
   excalidraw <- tempfile(fileext = ".excalidraw")
   run_app(
     excalidraw = excalidraw,
@@ -91,7 +97,8 @@ excalidraw <- function(
     onStart = onStart,
     options = options,
     enableBookmarking = enableBookmarking,
-    uiPattern = uiPattern
+    uiPattern = uiPattern,
+    talkative = talkative
   )
 }
 
@@ -101,8 +108,9 @@ run_app <- function(
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
-  uiPattern = "/"
-) {
+  uiPattern = "/",
+  talkative = FALSE
+    ) {
   with_golem_options(
     app = shinyApp(
       ui = app_ui,
@@ -114,7 +122,8 @@ run_app <- function(
     ),
     golem_opts = list(
       path_to_excalidraw = excalidraw,
-      auto_save = auto_save
+      auto_save = auto_save,
+      talkative = talkative
     )
   )
 }
