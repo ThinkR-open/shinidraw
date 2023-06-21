@@ -1,8 +1,8 @@
 flat_consent.Rmd:
   path: dev/flat_consent.Rmd
   state: active
-  R: R/excalidraw_consent.R
-  tests: tests/testthat/test-excalidraw_consent.R
+  R: R/consent.R
+  tests: tests/testthat/test-consent.R
   vignettes: []
   inflate:
     pkg: shinidraw

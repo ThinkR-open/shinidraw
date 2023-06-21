@@ -45,6 +45,7 @@ rm(list = ls())
 }
 grkstyle::grk_style_pkg()
 devtools::check()
+
 remotes::install_local(force = TRUE)
 
 ## Add helper functions ----
