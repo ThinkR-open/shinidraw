@@ -31,10 +31,7 @@ consent <- function(force = FALSE) {
 			)
 			return(TRUE)
 		} else {
-			cli::cli_alert_warning(
-				"You need to accept the consent to use {shinidraw} projects."
-			)
-			return(FALSE)
+			stop("You need to accept the consent to use {shinidraw} projects.")
 		}
 	}
 }

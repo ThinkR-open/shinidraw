@@ -45,7 +45,8 @@ rm(list = ls())
 }
 grkstyle::grk_style_pkg()
 devtools::check()
-
+desc::desc_bump_version("dev")
+rmarkdown::render("README.Rmd")
 remotes::install_local(force = TRUE)
 
 ## Add helper functions ----

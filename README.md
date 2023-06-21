@@ -70,13 +70,13 @@ have to worry about losing your work.
 
 ## About
 
-You’re reading the doc about version: 0.0.0.9003
+You’re reading the doc about version: 0.0.0.9004
 
 This README has been compiled on the
 
 ``` r
 Sys.time()
-#> [1] "2023-06-21 14:26:34 CEST"
+#> [1] "2023-06-21 14:30:06 CEST"
 ```
 
 Here are the test & coverage results:
@@ -84,24 +84,24 @@ Here are the test & coverage results:
 ``` r
 devtools::check(quiet = TRUE)
 #> ℹ Loading shinidraw
-#> ── R CMD check results ─────────────────────────────── shinidraw 0.0.0.9003 ────
-#> Duration: 11s
+#> ── R CMD check results ────────────────────────────────────────────────────────────────────── shinidraw 0.0.0.9004 ────
+#> Duration: 10.9s
 #> 
 #> 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 ```
 
 ``` r
 covr::package_coverage()
-#> shinidraw Coverage: 59.10%
+#> shinidraw Coverage: 56.89%
 #> R/run_app.R: 0.00%
-#> R/excal_existing_project.R: 12.84%
-#> R/mod_excalidraw.R: 57.45%
-#> R/consent.R: 70.37%
-#> R/excalidraw_consent.R: 74.07%
-#> R/get_excalidraw_path.R: 80.00%
-#> R/golem_utils_server.R: 84.62%
-#> R/golem_utils_ui.R: 89.57%
-#> R/app_ui.R: 93.10%
+#> R/excal_existing_project.R: 13.54%
+#> R/consent.R: 61.90%
+#> R/mod_excalidraw.R: 62.22%
+#> R/excalidraw_consent.R: 66.67%
+#> R/get_excalidraw_path.R: 66.67%
+#> R/golem_utils_server.R: 77.78%
+#> R/golem_utils_ui.R: 87.94%
+#> R/app_ui.R: 92.00%
 #> R/app_config.R: 100.00%
 #> R/app_server.R: 100.00%
 #> R/excal_dependency.R: 100.00%
