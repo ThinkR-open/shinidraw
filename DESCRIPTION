@@ -1,11 +1,11 @@
 Package: shinidraw
 Title: 'Excalidraw' in 'Shiny'
-Version: 0.0.0.9000
-Authors@R:
-    c(
-        person("Colin", "Fay", , "contact@colinfay.me", role = c("cre", "aut")),
-        person("Excalidraw", , role = "cph", comment = "Excalidraw Lib")
-    )
+Version: 0.0.0.9001
+Authors@R: c(
+    person("Colin", "Fay", , "contact@colinfay.me", role = c("cre", "aut")),
+    person("Excalidraw", role = "cph",
+           comment = "Excalidraw Lib")
+  )
 Description: Bringing 'Excalidraw' to 'Shiny', with built-in project
     management and auto saving.
 License: MIT + file LICENSE
@@ -22,6 +22,7 @@ Imports:
 Suggests:
     spelling,
     testthat (>= 3.0.0)
+Config/fusen/version: 0.5.0.9001
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US

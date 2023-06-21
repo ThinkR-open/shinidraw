@@ -1,0 +1,56 @@
+flat_consent.Rmd:
+  path: dev/flat_consent.Rmd
+  state: active
+  R: R/excalidraw_consent.R
+  tests: tests/testthat/test-excalidraw_consent.R
+  vignettes: []
+  inflate:
+    pkg: shinidraw
+    flat_file: dev/flat_consent.Rmd
+    vignette_name: .na
+    open_vignette: yes
+    check: no
+    document: yes
+    overwrite: ask
+flat_htmldep.Rmd:
+  path: dev/flat_htmldep.Rmd
+  state: active
+  R: R/excal_dependency.R
+  tests: tests/testthat/test-excal_dependency.R
+  vignettes: []
+  inflate:
+    pkg: shinidraw
+    flat_file: dev/flat_htmldep.Rmd
+    vignette_name: .na
+    open_vignette: yes
+    check: no
+    document: yes
+    overwrite: ask
+flat_project_mgmt.Rmd:
+  path: dev/flat_project_mgmt.Rmd
+  state: active
+  R: R/excal_existing_project.R
+  tests: tests/testthat/test-excal_existing_project.R
+  vignettes: []
+  inflate:
+    pkg: shinidraw
+    flat_file: dev/flat_project_mgmt.Rmd
+    vignette_name: .na
+    open_vignette: yes
+    check: no
+    document: yes
+    overwrite: ask
+flat_utils.Rmd:
+  path: dev/flat_utils.Rmd
+  state: active
+  R: R/get_excalidraw_path.R
+  tests: tests/testthat/test-get_excalidraw_path.R
+  vignettes: []
+  inflate:
+    pkg: shinidraw
+    flat_file: dev/flat_utils.Rmd
+    vignette_name: .na
+    open_vignette: yes
+    check: no
+    document: yes
+    overwrite: ask

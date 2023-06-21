@@ -11,42 +11,42 @@
 #'
 #' @importFrom shiny NS tagList
 mod_excalidraw_ui <- function(
-  id,
-  path_to_excalidraw,
-  with_auto_save = TRUE
-    ) {
-  ns <- NS(id)
-  if (is.null(path_to_excalidraw)) {
-    excalidraw_initialData <- "[]"
-  } else if (tools::file_ext(path_to_excalidraw) != "excalidraw") {
-    excalidraw_initialData <- "[]"
-  } else if (!file.exists(path_to_excalidraw)) {
-    excalidraw_initialData <- "[]"
-  } else {
-    excalidraw_initialData <- paste(
-      suppressWarnings(
-        readLines(path_to_excalidraw)
-      ),
-      collapse = " "
-    )
-  }
+	id,
+	path_to_excalidraw,
+	with_auto_save = TRUE
+				) {
+	ns <- NS(id)
+	if (is.null(path_to_excalidraw)) {
+		excalidraw_initialData <- "[]"
+	} else if (tools::file_ext(path_to_excalidraw) != "excalidraw") {
+		excalidraw_initialData <- "[]"
+	} else if (!file.exists(path_to_excalidraw)) {
+		excalidraw_initialData <- "[]"
+	} else {
+		excalidraw_initialData <- paste(
+			suppressWarnings(
+				readLines(path_to_excalidraw)
+			),
+			collapse = " "
+		)
+	}
 
-  tagList(
-    excal_dependency(),
-    htmlTemplate(
-      app_sys("app/www/index.html"),
-      initialData = excalidraw_initialData,
-      auto_save = {
-        if (with_auto_save) {
-          "true"
-        } else {
-          "false"
-        }
-      },
-      id_for_shiny = ns("excalidraw")
-      # add here other template arguments
-    )
-  )
+	tagList(
+		excal_dependency(),
+		htmlTemplate(
+			app_sys("app/www/index.html"),
+			initialData = excalidraw_initialData,
+			auto_save = {
+				if (with_auto_save) {
+					"true"
+				} else {
+					"false"
+				}
+			},
+			id_for_shiny = ns("excalidraw")
+			# add here other template arguments
+		)
+	)
 }
 
 #' main Server Functions
@@ -54,24 +54,24 @@ mod_excalidraw_ui <- function(
 #' @export
 #' @rdname mod_excalidraw
 mod_excalidraw_server <- function(id) {
-  moduleServer(id, function(input, output, session) {
-    ns <- session$ns
+	moduleServer(id, function(input, output, session) {
+		ns <- session$ns
 
-    observeEvent(input$excalidraw, {
-      if (
-        as.logical(
-          golem::get_golem_options("auto_save")
-        )
-      ) {
-        cli::cat_rule(sprintf("[%s] Saving excalidraw", as.character(Sys.time())))
-        cat(
-          input$excalidraw,
-          file = golem::get_golem_options("path_to_excalidraw")
-        )
-        cli::cat_line()
-      }
-    }) |> debounce(1000)
-  })
+		observeEvent(input$excalidraw, {
+			if (
+				as.logical(
+					golem::get_golem_options("auto_save")
+				)
+			) {
+				cli::cat_rule(sprintf("[%s] Saving excalidraw", as.character(Sys.time())))
+				cat(
+					input$excalidraw,
+					file = golem::get_golem_options("path_to_excalidraw")
+				)
+				cli::cat_line()
+			}
+		}) |> debounce(1000)
+	})
 }
 
 ## To be copied in the UI

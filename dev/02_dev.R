@@ -34,11 +34,18 @@ rm(list = ls())
     flat_file = "dev/flat_htmldep.Rmd"
   )
   comfy_inflate(
+    flat_file = "dev/flat_consent.Rmd"
+  )
+  comfy_inflate(
+    flat_file = "dev/flat_utils.Rmd"
+  )
+  comfy_inflate(
     flat_file = "dev/flat_project_mgmt.Rmd"
   )
 }
 grkstyle::grk_style_pkg()
 devtools::check()
+remotes::install_local(force = TRUE)
 
 ## Add helper functions ----
 ## Creates fct_* and utils_*

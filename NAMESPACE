@@ -2,10 +2,12 @@
 
 export(excal_existing_project)
 export(excalidraw)
+export(excalidraw_consent)
 export(excalidraw_get_project)
 export(excalidraw_new_project)
 export(excalidraw_open_file)
 export(excalidraw_open_project)
+export(excalidraw_unconsent)
 export(mod_excalidraw_server)
 export(mod_excalidraw_ui)
 import(shiny)
