@@ -21,7 +21,7 @@ pkgload::load_all(export_all = FALSE)
 #'
 #' @return 1
 #' @noRd
-excal_dependency <- function() {
+excalidraw_dependency <- function() {
   htmltools::htmlDependency(
     "Excalidraw",
     "0.14.2",
@@ -44,12 +44,12 @@ excal_dependency <- function() {
 ```
 
 ```{r examples-htmldep}
-excal_dependency()
+excalidraw_dependency()
 ```
 
 ```{r tests-htmldep}
 test_that("htmldep works", {
-  deps <- excal_dependency()
+  deps <- excalidraw_dependency()
   expect_true(
     inherits(deps, "html_dependency")
   )

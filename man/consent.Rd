@@ -20,7 +20,7 @@ Consent to using shinidraw
 }
 \examples{
 if (interactive()) {
-  consent()
-  unconsent()
+  excalidraw_consent()
+  excalidraw_unconsent()
 }
 }

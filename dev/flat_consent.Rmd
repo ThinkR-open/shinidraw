@@ -58,21 +58,21 @@ excalidraw_unconsent <- function() {
 
 ```{r examples-consent}
 if (interactive()) {
-  consent()
-  unconsent()
+  excalidraw_consent()
+  excalidraw_unconsent()
 }
 ```
 
 ```{r tests-consent}
 test_that("consent works", {
-  unconsent()
-  consent(TRUE)
+  excalidraw_unconsent()
+  excalidraw_consent(TRUE)
   expect_true(
     file.exists(
       app_sys("consent")
     )
   )
-  unconsent()
+  excalidraw_unconsent()
   expect_false(
     file.exists(
       app_sys("consent")

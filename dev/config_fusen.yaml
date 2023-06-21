@@ -15,8 +15,8 @@ flat_consent.Rmd:
 flat_htmldep.Rmd:
   path: dev/flat_htmldep.Rmd
   state: active
-  R: R/excal_dependency.R
-  tests: tests/testthat/test-excal_dependency.R
+  R: R/excalidraw_dependency.R
+  tests: tests/testthat/test-excalidraw_dependency.R
   vignettes: []
   inflate:
     pkg: shinidraw

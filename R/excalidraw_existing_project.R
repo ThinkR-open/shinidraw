@@ -8,10 +8,10 @@
 #' @export
 #' @examples
 #' if (interactive()) {
-#'   excal_new_or_existing()
+#'   excalidraw_new_or_existing()
 #' }
-excalidraw_existing_project <- function() {
-  x <- excal_list_existing_projects()
+excalidraw_existing_project <- function(){
+  x <- excalidraw_list_existing_projects()
   if (length(x) == 0) {
     cli::cli_alert_danger("No existing project")
     return(FALSE)
@@ -26,14 +26,14 @@ excalidraw_existing_project <- function() {
   )
 }
 
-excal_list_existing_projects <- function() {
+excalidraw_list_existing_projects <- function() {
   list.files(
     get_excalidraw_path()
   )
 }
 
 
-excal_new_or_existing <- function() {
+excalidraw_new_or_existing <- function() {
   utils::menu(
     c("new" = "New project", "exising" = "Existing project"),
     title = "Do you wanna work on a new project or an existing one?"
@@ -41,12 +41,12 @@ excal_new_or_existing <- function() {
 }
 
 # Get a new project name
-excal_prompt_new_project_name <- function() {
+excalidraw_prompt_new_project_name <- function() {
   # Ask the user to enter a project name
   # If the project name is valid but already exists, ask to print the existing ones
   # If yes, print the projects
   # Ask again, until project name is valid
-  existing_projects <- excal_list_existing_projects()
+  existing_projects <- excalidraw_list_existing_projects()
   re_prompt <- TRUE
   while (re_prompt) {
     # Ask for a project name
@@ -63,13 +63,13 @@ excal_prompt_new_project_name <- function() {
   }
 }
 
-excal_prompt_existing_project_name <- function() {
+excalidraw_prompt_existing_project_name <- function() {
   # Ask the user to select an existing project name
-  existing_projects <- excal_list_existing_projects()
+  existing_projects <- excalidraw_list_existing_projects()
   # If no existing project, create a new one by prompting the user
   if (length(existing_projects) == 0) {
     cli::cli_alert_danger("No existing project")
-    project_name <- excal_prompt_new_project_name()
+    project_name <- excalidraw_prompt_new_project_name()
   } else {
     project_name <- existing_projects[utils::menu(
       existing_projects,
@@ -80,11 +80,11 @@ excal_prompt_existing_project_name <- function() {
 }
 
 handle_new_project <- function(project) {
-  excal_home <- get_excalidraw_path()
+  excalidraw_home <- get_excalidraw_path()
   # The user hasn't prompted a project name
   if (missing(project)) {
     # Prompt for new project
-    project_name <- excal_prompt_new_project_name()
+    project_name <- excalidraw_prompt_new_project_name()
   } else {
     # The user has entered a project name
     # We need to make sure this project can
@@ -92,7 +92,7 @@ handle_new_project <- function(project) {
     project_name <- project
 
     # If a project is specified, check if it exists
-    if (dir.exists(file.path(excal_home, project_name))) {
+    if (dir.exists(file.path(excalidraw_home, project_name))) {
       # It exists, we might want to open it instead of
       # creating a new one
       cli::cli_alert_danger("This project already exists.")
@@ -103,7 +103,7 @@ handle_new_project <- function(project) {
     }
   }
   # Here, we have the name of the project, we need to build the path to it
-  project_path <- file.path(excal_home, project_name)
+  project_path <- file.path(excalidraw_home, project_name)
 
   # Each project has its own versionning system with
   # the current date as the version
@@ -123,20 +123,20 @@ handle_new_project <- function(project) {
 }
 
 handle_open_project <- function(project) {
-  excal_home <- get_excalidraw_path()
+  excalidraw_home <- get_excalidraw_path()
   # The user hasn't prompted a project name
   if (missing(project)) {
     # Prompt for new project
     project_path <- file.path(
-      excal_home,
-      excal_prompt_existing_project_name()
+      excalidraw_home,
+      excalidraw_prompt_existing_project_name()
     )
   } else {
     # The user has entered a project name
     # We need to make sure this project can
     # either be created, or opened
     project_path <- file.path(
-      excal_home,
+      excalidraw_home,
       project
     )
     # If a project is specified, check if it exists
@@ -172,12 +172,13 @@ handle_open_project <- function(project) {
 #' @param project_name The name of the project
 #'
 #' @export
-excalidraw_get_project <- function(project_name) {
-  excal_home <- get_excalidraw_path()
-  proj <- file.path(excal_home, sprintf("%s.excalidraw", project_name))
+excalidraw_get_project <- function(project_name){
+  excalidraw_home <- get_excalidraw_path()
+  proj <- file.path(excalidraw_home, sprintf("%s.excalidraw", project_name))
   if (length(proj) == 0) {
     cli::cli_alert_danger("No existing project")
     return(FALSE)
   }
   return(proj)
 }
+

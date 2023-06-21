@@ -7,17 +7,18 @@
 #'
 #' @examples
 #' if (interactive()) {
-#' 	get_excalidraw_path()
+#'   get_excalidraw_path()
 #' }
 get_excalidraw_path <- function() {
-	if (
-		!excalidraw_consent()
-	) {
-		stop("You need to accept the consent to use {shinidraw} projects.\nRun the `excalidraw_consent()` function to accept the consent.")
-	}
-	pth <- Sys.getenv("EXCALIDRAW_PATH", unset = "~/shinidraw/")
-	if (!dir.exists(pth)) {
-		dir.create(pth)
-	}
-	return(pth)
+  if (
+    !excalidraw_consent()
+  ) {
+    stop("You need to accept the consent to use {shinidraw} projects.\nRun the `excalidraw_consent()` function to accept the consent.")
+  }
+  pth <- Sys.getenv("EXCALIDRAW_PATH", unset = "~/shinidraw/")
+  if (!dir.exists(pth)) {
+    dir.create(pth)
+  }
+  return(pth)
 }
+

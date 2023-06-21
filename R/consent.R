@@ -9,8 +9,8 @@
 #'
 #' @examples
 #' if (interactive()) {
-#'   consent()
-#'   unconsent()
+#'   excalidraw_consent()
+#'   excalidraw_unconsent()
 #' }
 excalidraw_consent <- function(force = FALSE) {
   if (file.exists(

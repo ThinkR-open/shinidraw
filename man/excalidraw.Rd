@@ -13,7 +13,8 @@ excalidraw_new_project(
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
-  uiPattern = "/"
+  uiPattern = "/",
+  talkative = FALSE
 )
 
 excalidraw_open_project(
@@ -68,6 +69,8 @@ for more information on bookmarking your app.}
 request to determine whether the \code{ui} should be used to handle the
 request. Note that the entire request path must match the regular
 expression in order for the match to be considered successful.}
+
+\item{talkative}{whether to print messages when saving.}
 
 \item{excalidraw}{path to the excalidraw file to load.}
 }

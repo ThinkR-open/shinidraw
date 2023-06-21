@@ -11,6 +11,6 @@ List existing project saved in the shinidraw project folder
 }
 \examples{
 if (interactive()) {
-  excal_new_or_existing()
+  excalidraw_new_or_existing()
 }
 }

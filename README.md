@@ -56,7 +56,7 @@ excalidraw_open_project("rr-2023")
 
 # Simply open a file
 excalidraw_open_file(
-  excal_helloworld()
+  excalidraw_existing_project()
 )
 ```
 
@@ -70,13 +70,13 @@ have to worry about losing your work.
 
 ## About
 
-You’re reading the doc about version: 0.0.0.9005
+You’re reading the doc about version: 0.0.0.9006
 
 This README has been compiled on the
 
 ``` r
 Sys.time()
-#> [1] "2023-06-21 14:40:50 CEST"
+#> [1] "2023-06-21 14:59:16 CEST"
 ```
 
 Here are the test & coverage results:
@@ -84,44 +84,26 @@ Here are the test & coverage results:
 ``` r
 devtools::check(quiet = TRUE)
 #> ℹ Loading shinidraw
-#> Writing 'excalidraw.Rd'
-#> ── R CMD check results ────────────────────────────────────────────────────────────────────── shinidraw 0.0.0.9005 ────
-#> Duration: 10.7s
-#>
-#> ❯ checking Rd \usage sections ... WARNING
-#>   Undocumented arguments in documentation object 'excalidraw_new_project'
-#>     ‘talkative’
-#>
-#>   Functions with \usage entries need to have the appropriate \alias
-#>   entries, and all their arguments documented.
-#>   The \usage entries must correspond to syntactically valid R code.
-#>   See chapter ‘Writing R documentation files’ in the ‘Writing R
-#>   Extensions’ manual.
-#>
-#> ❯ checking R code for possible problems ... NOTE
-#>   excalidraw_new_project: no visible binding for global variable
-#>     ‘talkative’
-#>   Undefined global functions or variables:
-#>     talkative
-#>
-#> 0 errors ✔ | 1 warning ✖ | 1 note ✖
+#> ── R CMD check results ─────────────────────────────── shinidraw 0.0.0.9006 ────
+#> Duration: 10.4s
+#> 
+#> 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 ```
 
 ``` r
 covr::package_coverage()
-#> shinidraw Coverage: 59.19%
+#> shinidraw Coverage: 58.75%
 #> R/run_app.R: 0.00%
-#> R/excal_existing_project.R: 12.84%
+#> R/excalidraw_existing_project.R: 13.54%
 #> R/mod_excalidraw.R: 60.78%
-#> R/excalidraw_consent.R: 74.07%
-#> R/consent.R: 79.17%
-#> R/get_excalidraw_path.R: 80.00%
+#> R/get_excalidraw_path.R: 66.67%
+#> R/consent.R: 77.78%
 #> R/golem_utils_server.R: 84.62%
 #> R/golem_utils_ui.R: 89.57%
-#> R/app_ui.R: 93.10%
+#> R/app_ui.R: 92.00%
 #> R/app_config.R: 100.00%
 #> R/app_server.R: 100.00%
-#> R/excal_dependency.R: 100.00%
+#> R/excalidraw_dependency.R: 100.00%
 #> R/utils_examples.R: 100.00%
 ```
 

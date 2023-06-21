@@ -3,6 +3,7 @@
 #' @param project name to the project to load or create.
 #' @param auto_save whether to save the project automatically.
 #' @param excalidraw path to the excalidraw file to load.
+#' @param talkative whether to print messages when saving.
 #' @inheritParams shiny::shinyApp
 #'
 #' @importFrom shiny shinyApp
@@ -15,9 +16,10 @@ excalidraw_new_project <- function(
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
-  uiPattern = "/"
-    ) {
-  consent()
+  uiPattern = "/",
+  talkative = FALSE
+) {
+  excalidraw_consent()
   run_app(
     excalidraw = handle_new_project(
       project
@@ -40,8 +42,8 @@ excalidraw_open_project <- function(
   enableBookmarking = NULL,
   uiPattern = "/",
   talkative = FALSE
-    ) {
-  consent()
+) {
+  excalidraw_consent()
   run_app(
     excalidraw = handle_open_project(
       project
@@ -64,11 +66,11 @@ excalidraw_open_file <- function(
   enableBookmarking = NULL,
   uiPattern = "/",
   talkative = FALSE
-    ) {
+) {
   if (missing(excalidraw)) {
     excalidraw <- tempfile(fileext = ".excalidraw")
   } else {
-    consent()
+    excalidraw_consent()
   }
   run_app(
     excalidraw = excalidraw,
@@ -89,7 +91,7 @@ excalidraw <- function(
   enableBookmarking = NULL,
   uiPattern = "/",
   talkative = FALSE
-    ) {
+) {
   excalidraw <- tempfile(fileext = ".excalidraw")
   run_app(
     excalidraw = excalidraw,
@@ -110,7 +112,7 @@ run_app <- function(
   enableBookmarking = NULL,
   uiPattern = "/",
   talkative = FALSE
-    ) {
+) {
   with_golem_options(
     app = shinyApp(
       ui = app_ui,

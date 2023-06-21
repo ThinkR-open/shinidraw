@@ -5,8 +5,8 @@
 #' @return 1
 #' @noRd
 #' @examples
-#' excal_dependency()
-excal_dependency <- function() {
+#' excalidraw_dependency()
+excalidraw_dependency <- function() {
 	htmltools::htmlDependency(
 		"Excalidraw",
 		"0.14.2",

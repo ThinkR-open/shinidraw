@@ -31,7 +31,7 @@ mod_excalidraw_ui <- function(
   }
 
   tagList(
-    excal_dependency(),
+    excalidraw_dependency(),
     htmlTemplate(
       app_sys("app/www/index.html"),
       initialData = excalidraw_initialData,
