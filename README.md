@@ -26,16 +26,16 @@ pak::pak("thinkr-open/shinidraw")
 ## Why?
 
 Excalidraw is awesome, and we’ve been using it for prototyping `{shiny}`
-apps for a while now. So what was missing, and what does `{shinidraw}`
-brings to the table?
+apps for a while now. So what is missing, and what does `{shinidraw}`
+bring to the table?
 
 ### Projects
 
-When use in the browser, Excalidraw saves your drawings in your
+When used in the browser, Excalidraw saves your drawings in your
 browser’s local storage, and you can export and save locally.
 
 When using `{shinidraw}`, you’ll have a built-in project system, where
-the `.excalidraw` files are store on the machine running the app.
+the `.excalidraw` files are stored on the machine running the app.
 
 If you develop in an existing project, `{shinidraw}` will load the
 latest version of the `.excalidraw` file.
@@ -70,32 +70,33 @@ have to worry about losing your work.
 
 ## About
 
-You’re reading the doc about version : 0.0.0.9000
+You’re reading the doc about version: 0.0.0.9003
 
 This README has been compiled on the
 
 ``` r
 Sys.time()
-#> [1] "2023-06-21 14:09:17 CEST"
+#> [1] "2023-06-21 14:26:34 CEST"
 ```
 
-Here are the test & coverage results :
+Here are the test & coverage results:
 
 ``` r
 devtools::check(quiet = TRUE)
 #> ℹ Loading shinidraw
-#> ── R CMD check results ─────────────────────────────── shinidraw 0.0.0.9000 ────
-#> Duration: 10.2s
+#> ── R CMD check results ─────────────────────────────── shinidraw 0.0.0.9003 ────
+#> Duration: 11s
 #> 
 #> 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 ```
 
 ``` r
 covr::package_coverage()
-#> shinidraw Coverage: 58.71%
+#> shinidraw Coverage: 59.10%
 #> R/run_app.R: 0.00%
 #> R/excal_existing_project.R: 12.84%
 #> R/mod_excalidraw.R: 57.45%
+#> R/consent.R: 70.37%
 #> R/excalidraw_consent.R: 74.07%
 #> R/get_excalidraw_path.R: 80.00%
 #> R/golem_utils_server.R: 84.62%
